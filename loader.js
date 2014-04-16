@@ -106,12 +106,12 @@ var N = (function() {
 	}
 
 	function loadScript(url) {
-		var s = document.createElement('script');
-		s.type = 'text/javascript';
-		s.async = true;
-		s.src = url;
-		var x = document.getElementsByTagName('head')[0];
-		x.appendChild(s);
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.async = true;
+		script.src = url;
+		var container = document.getElementsByTagName('head')[0];
+		container.appendChild(script);
 	}
 
 	return {
