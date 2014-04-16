@@ -12,7 +12,7 @@ var N = (function() {
 			var subscribers = topics[topic],
 				len = subscribers ? subscribers.length : 0;
 			while (len--) {
-				subscribers[len].func(topic, args);
+				subscribers[len] && subscribers[len].func(topic, args);
 			}
 			return this;
 		};
@@ -76,7 +76,7 @@ var N = (function() {
 		this.factory = factory;
 		var self = this;
 		var executed = false;
-		bus.subscribe('module:ready', function(topics, data) {
+		this.token=bus.subscribe('module:ready', function(topics, data) {
 			self.checkDependencies();
 		})
 	}
@@ -89,6 +89,7 @@ var N = (function() {
 		modules[this.name].exports = exports;
 		this.executed = true;
 		console.log('module executed: ' + this.name)
+		bus.unsubscribe(this.token);
 		bus.publish('module:ready', {
 			name: this.name
 		});
