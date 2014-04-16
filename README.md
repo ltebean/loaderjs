@@ -1,4 +1,4 @@
-loaderjs is simplefied javascript loader for learning purpose.
+loaderjs is a simplefied javascript loader for learning purpose.
 
 ##Usage
 
